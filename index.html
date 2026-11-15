@@ -2,9 +2,10 @@
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0f1117">
+<meta name="theme-color" content="#0e1015">
 <title>Ломингер — оценка компетенций</title>
 <style>
+html{color-scheme:dark}
 :root{--bg:#0e1015;--card:#161a22;--line:#242a36;--soft:#1e232d;
 --txt:#eceff5;--dim:#9aa4b5;--acc:#2f6ce0;
 --red:#e06a6a;--green:#3ba87d;--amber:#c99444}
@@ -16,13 +17,15 @@ text-rendering:optimizeLegibility;overflow-wrap:break-word;hyphens:none}
 .wrap{max-width:620px;margin:0 auto}
 .top{display:flex;align-items:center;gap:12px;margin:0 2px 12px}
 .bar{flex:1;height:4px;background:#1f2531;border-radius:3px;overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:var(--acc);transition:width .25s}
+.bar i{display:block;height:100%;width:100%;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .25s}
 .pinfo{font-size:13px;line-height:1.4;color:var(--dim);white-space:nowrap;font-variant-numeric:tabular-nums}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
 h1{font-size:26px;line-height:1.22;font-weight:650;margin:0 0 10px;text-wrap:balance}
 h2{font-size:21px;line-height:1.3;font-weight:600;margin:0 0 8px;text-wrap:balance}
 p{margin:0 0 10px}
 .dim{color:var(--dim)}
+.small{font-size:15px;line-height:1.5}
+.chip{display:flex;align-items:center;gap:8px;font-size:13px;line-height:1.4;color:var(--dim);margin:0 0 8px}
 .hint{font-size:13px;line-height:1.55;color:var(--dim);margin:0 0 14px}
 .meta{display:flex;align-items:center;gap:8px;font-size:13px;line-height:1.4;color:var(--dim);margin-bottom:10px}
 .meta-line{font-size:13px;line-height:1.5;color:var(--dim);margin:12px 0 0;font-variant-numeric:tabular-nums}
@@ -32,11 +35,11 @@ background:#232a37;color:#c9d3e6;font-size:13px;font-weight:600;font-variant-num
 .shelf-g{color:var(--green)}
 .shelf-y{color:var(--amber)}
 #list{margin:0 -4px}
-.it{display:flex;gap:12px;align-items:flex-start;padding:14px 4px;border-bottom:1px solid var(--soft);cursor:pointer}
+.it{display:flex;gap:12px;align-items:flex-start;padding:14px 4px;border-bottom:1px solid var(--soft);cursor:pointer;touch-action:manipulation}
 .it:last-child{border-bottom:0}
 .it .bx{flex:0 0 22px;height:22px;border-radius:6px;border:1.5px solid #3c4453;display:flex;
-align-items:center;justify-content:center;font-size:14px;line-height:1;margin-top:2px;transition:.12s}
-.it .txt{flex:1;font-size:17px;line-height:1.31;color:var(--txt)}
+align-items:center;justify-content:center;font-size:14px;line-height:1;margin-top:2px;transition:background-color .12s,border-color .12s,color .12s}
+.it .txt{flex:1;font-size:17px;line-height:1.45;color:var(--txt)}
 .it.on .txt{font-weight:500}
 .it.on .bx{color:#0e1015;font-weight:800}
 .it.on.s-r .bx{background:var(--red);border-color:var(--red)}
@@ -46,12 +49,13 @@ align-items:center;justify-content:center;font-size:14px;line-height:1;margin-to
 .cnt{font-size:13px;line-height:1.5;color:var(--dim);margin:14px 0 0;font-variant-numeric:tabular-nums}
 .cnt.ok{color:var(--green)}
 button{font:inherit;font-size:17px;font-weight:600;width:100%;min-height:52px;padding:14px 16px;
-border-radius:12px;border:1px solid #2a313f;background:#1b212b;color:var(--txt);margin:8px 0;cursor:pointer}
+border-radius:12px;border:1px solid #2a313f;background:#1b212b;color:var(--txt);margin:8px 0;cursor:pointer;touch-action:manipulation}
 button:active{opacity:.9}
 button.primary{background:var(--acc);border-color:var(--acc);color:#fff}
 button.ghost{background:transparent;border-color:transparent;color:var(--dim);font-size:15px;
 font-weight:400;min-height:44px;padding:8px}
 button:focus-visible,.it:focus-visible,.row:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+#app [tabindex="-1"]:focus{outline:none}
 .pill{display:inline-flex;flex-direction:column;gap:2px;background:#1b212b;border:1px solid var(--line);
 border-radius:10px;padding:9px 12px;margin:0 6px 6px 0;font-size:13px;line-height:1.3;color:var(--dim)}
 .pill b{font-size:21px;line-height:1.1;font-weight:650;color:var(--txt);font-variant-numeric:tabular-nums}
@@ -62,9 +66,9 @@ border-radius:10px;padding:9px 12px;margin:0 6px 6px 0;font-size:13px;line-heigh
 .verdict.y{border-left-color:var(--amber)}
 .ex{font-size:17px;line-height:1.5;color:var(--dim);margin:6px 0}
 .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 2px;
-border-bottom:1px solid var(--soft);cursor:pointer;font-size:17px}
+border-bottom:1px solid var(--soft);cursor:pointer;font-size:17px;touch-action:manipulation}
 .row:last-child{border-bottom:0}
-.row .t{flex:1;line-height:1.4;font-weight:500}
+.row .t{flex:1;min-width:0;line-height:1.4;font-weight:500}
 .row .c{font-size:13px;line-height:1.4;color:var(--dim);white-space:nowrap;font-variant-numeric:tabular-nums}
 #ft{position:fixed;left:0;right:0;bottom:0;display:none;gap:8px;
 padding:10px 12px calc(10px + env(safe-area-inset-bottom));
@@ -72,7 +76,7 @@ background:rgba(14,16,21,.96);backdrop-filter:blur(10px);border-top:1px solid va
 #ft button{margin:0;flex:1;padding:13px 8px;min-height:52px}
 #ft button.primary{flex:1.6}
 textarea{width:100%;min-height:200px;background:#11151c;color:#cfd7e6;border:1px solid var(--line);
-border-radius:12px;padding:12px;font:400 14px/1.5 ui-monospace,Menlo,monospace;resize:vertical}
+border-radius:12px;padding:12px;font:400 16px/1.5 ui-monospace,Menlo,monospace;resize:vertical}
 .steps{counter-reset:s;margin:0 0 4px;padding:0;list-style:none}
 .steps li{position:relative;padding:0 0 14px 32px;font-size:17px;line-height:1.45}
 .steps li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:2px;width:22px;height:22px;
@@ -114,15 +118,28 @@ function typo(s){
 }
 function escH(s){return typo(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function paint(h,foot){
-  document.getElementById('app').innerHTML=h;
+  var app=document.getElementById('app');
+  var ae=document.activeElement;
+  var lost=!!(ae&&ae!==document.body&&app.contains(ae));
+  app.innerHTML=h;
   var ft=document.getElementById('ft');
   if(!foot){ft.style.display='none';ft.innerHTML=''}
   updateBar();
   window.scrollTo(0,0);
+  if(lost){
+    var hd=app.querySelector('h1,h2');
+    if(hd){hd.setAttribute('tabindex','-1');hd.focus({preventScroll:true})}
+  }
 }
+document.addEventListener('keydown',function(e){
+  if(e.key!==' '&&e.key!=='Enter')return;
+  var t=e.target;
+  if(!t||!t.classList)return;
+  if(t.classList.contains('it')||t.classList.contains('row')){e.preventDefault();t.click()}
+});
 function updateBar(){
   var p=Object.keys(S.sk).length;
-  document.getElementById('pb').style.width=(p/TOTAL*100).toFixed(1)+'%';
+  document.getElementById('pb').style.transform='scaleX('+(p/TOTAL).toFixed(4)+')';
   document.getElementById('pinfo').textContent=p+' / '+TOTAL+' полок';
 }
 function idxOf(n,k){for(var i=0;i<STEPS.length;i++){if(STEPS[i].n===n&&STEPS[i].k===k)return i}return -1}
@@ -154,15 +171,15 @@ function goStep(i){
     '<div id="list">';
   (d[k]||[]).forEach(function(txt,j){
     var on=arr.indexOf(j)>=0;
-    h+='<div class="it s-'+info.c+(on?' on':'')+'" onclick="mark(this,'+j+')"><div class="bx">'+(on?'✓':'')+
+    h+='<div class="it s-'+info.c+(on?' on':'')+'" role="checkbox" tabindex="0" aria-checked="'+(on?'true':'false')+'" onclick="mark(this,'+j+')"><div class="bx">'+(on?'✓':'')+
        '</div><div class="txt">'+escH(txt)+'</div></div>';
   });
-  h+='</div><div class="cnt'+(arr.length>=2?' ok':'')+'" id="cnt">'+cntTxt(arr.length)+'</div></div>';
+  h+='</div><div class="cnt'+(arr.length>=2?' ok':'')+'" id="cnt" role="status">'+cntTxt(arr.length)+'</div></div>';
   window.__cur={n:st.n,k:k,i:i};
   paint(h,true);
   var ft=document.getElementById('ft');
   ft.style.display='flex';
-  ft.innerHTML='<button onclick="goStep('+(i-1)+')">←</button>'+
+  ft.innerHTML='<button aria-label="Назад на полку" onclick="goStep('+(i-1)+')">←</button>'+
     '<button onclick="skipStep()">Пропустить</button>'+
     '<button class="primary" onclick="nextStep()">Дальше →</button>';
 }
@@ -171,6 +188,7 @@ function mark(el,j){
   var p=a.indexOf(j);
   if(p>=0)a.splice(p,1); else a.push(j);
   el.classList.toggle('on');
+  el.setAttribute('aria-checked',el.classList.contains('on')?'true':'false');
   var bx=el.querySelector('.bx'); bx.textContent=el.classList.contains('on')?'✓':'';
   save();
   var cnt=document.getElementById('cnt');
@@ -195,7 +213,7 @@ function goChapter(n){
   h+='<div style="margin-top:14px">';
   sh.forEach(function(k){
     var c=(a[k]||[]).length, col=SH[k].c;
-    h+='<div class="row" onclick="goStep('+idxOf(n,k)+')"><div class="t shelf-'+col+'">'+SH[k].n+'</div>'+
+    h+='<div class="row" role="button" tabindex="0" onclick="goStep('+idxOf(n,k)+')"><div class="t shelf-'+col+'">'+SH[k].n+'</div>'+
        '<div class="c">'+c+' отм. ›</div></div>';
   });
   h+='</div>';
@@ -206,7 +224,7 @@ function goChapter(n){
   var ft=document.getElementById('ft'); ft.style.display='flex';
   var lastIdx=idxOf(n,sh[sh.length-1]);
   var nxt=STEPS[lastIdx+1];
-  ft.innerHTML='<button onclick="goStep('+lastIdx+')">←</button>'+
+  ft.innerHTML='<button aria-label="Назад на полку" onclick="goStep('+lastIdx+')">←</button>'+
     (nxt?'<button class="primary" onclick="goStep('+(lastIdx+1)+')">Дальше — №'+nxt.n+'</button>'
         :'<button class="primary" onclick="showResults()">К итогам</button>');
 }
@@ -263,7 +281,7 @@ function showList(b){
     var v=verdict(a); var col=v[0]==='r'?'#ff9a9a':v[0]==='g'?'#7ce7b8':v[0]==='y'?'#ffcf8a':'#98a2b3';
     var first=null; for(var i=0;i<sh.length;i++){if(!S.sk[x.n+'|'+sh[i]]){first=sh[i];break}}
     var tgt=first?idxOf(x.n,first):idxOf(x.n,sh[0]);
-    h+='<div class="row" onclick="goStep('+tgt+')"><div class="t"><span class="num">'+x.n+'</span>'+escH(x.t)+'</div>'+
+    h+='<div class="row" role="button" tabindex="0" onclick="goStep('+tgt+')"><div class="t"><span class="num">'+x.n+'</span>'+escH(x.t)+'</div>'+
        '<div class="c" style="color:'+col+'">'+pass+'/'+sh.length+(marks?' · '+marks+' отм.':'')+'</div></div>';
   });
   h+='<button class="ghost" onclick="goHome()">← На главную</button></div>';
@@ -289,7 +307,7 @@ function showResults(){
     var s='<div class="verdict '+cls+'"><b>'+title+'</b><span class="dim small">'+sub+'</span>';
     if(!arr.length)return s+'<div class="dim small" style="margin-top:6px">пока пусто</div></div>';
     arr.forEach(function(r){
-      s+='<div class="row" onclick="goStep('+idxOf(r.d.n,nk)+')"><div class="t"><span class="num">'+r.d.n+'</span>'+escH(r.d.t)+
+      s+='<div class="row" role="button" tabindex="0" onclick="goStep('+idxOf(r.d.n,nk)+')"><div class="t"><span class="num">'+r.d.n+'</span>'+escH(r.d.t)+
          '</div><div class="c">'+r.s[nk]+' отм. ›</div></div>';
     });
     return s+'</div>';
