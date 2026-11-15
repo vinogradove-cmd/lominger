@@ -1,93 +1,116 @@
 <!DOCTYPE html>
-<html lang="ru"><head><meta charset="utf-8">
+<html lang="ru" style="color-scheme:light"><head><meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0e1015">
+<meta name="theme-color" content="#F4F6F9">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <title>Ломингер — оценка компетенций</title>
 <style>
-html{color-scheme:dark}
-:root{--bg:#0e1015;--card:#161a22;--line:#242a36;--soft:#1e232d;
---txt:#eceff5;--dim:#9aa4b5;--acc:#2f6ce0;
---red:#e06a6a;--green:#3ba87d;--amber:#c99444}
+:root{--bg:#F4F6F9;--surf:#FFFFFF;--hair:#E3E7ED;--hair2:#D3DAE4;--ink:#0F141A;--mut:#6B7480;
+--cob:#2B54E0;--cob-soft:#EDF1FE;--red:#C0352E;--green:#1E7A52;--amber:#9C6512}
+html{color-scheme:light}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:var(--bg);color:var(--txt);
-font:400 17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-padding:14px 12px calc(100px + env(safe-area-inset-bottom));
-text-rendering:optimizeLegibility;overflow-wrap:break-word;hyphens:none}
+body{margin:0;background:var(--bg);color:var(--ink);
+font:400 17px/1.45 "IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+padding:0 12px calc(96px + env(safe-area-inset-bottom));
+-webkit-font-smoothing:antialiased;overflow-wrap:break-word;hyphens:none}
 .wrap{max-width:620px;margin:0 auto}
-.top{display:flex;align-items:center;gap:12px;margin:0 2px 12px}
-.bar{flex:1;height:4px;background:#1f2531;border-radius:3px;overflow:hidden}
-.bar i{display:block;height:100%;width:100%;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .25s}
-.pinfo{font-size:13px;line-height:1.4;color:var(--dim);white-space:nowrap;font-variant-numeric:tabular-nums}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
-h1{font-size:26px;line-height:1.22;font-weight:650;margin:0 0 10px;text-wrap:balance}
-h2{font-size:21px;line-height:1.3;font-weight:600;margin:0 0 8px;text-wrap:balance}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:11.5px;line-height:1.5;
+letter-spacing:.02em;color:var(--mut);font-variant-numeric:tabular-nums}
+.top{position:sticky;top:0;z-index:7;background:rgba(244,246,249,.95);backdrop-filter:blur(10px);
+padding:11px 2px 9px;margin-bottom:12px;border-bottom:1px solid var(--hair)}
+.seg{display:flex;gap:2px;height:5px}
+.seg i{flex:1;background:#E4E9F0;border-radius:1px}
+.seg i.f{background:var(--cob)}
+.prow{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;gap:10px}
+#pinfo{color:var(--ink);font-size:12px}
+.card{background:var(--surf);border-radius:12px;padding:16px;margin-bottom:12px}
+h1{font-size:25px;line-height:1.16;font-weight:600;letter-spacing:-.015em;margin:0 0 10px;text-wrap:balance}
+h2{font-size:22px;line-height:1.22;font-weight:600;letter-spacing:-.012em;margin:10px 0 8px;text-wrap:balance}
 p{margin:0 0 10px}
-.dim{color:var(--dim)}
-.small{font-size:15px;line-height:1.5}
-.chip{display:flex;align-items:center;gap:8px;font-size:13px;line-height:1.4;color:var(--dim);margin:0 0 8px}
-.hint{font-size:13px;line-height:1.55;color:var(--dim);margin:0 0 14px}
-.meta{display:flex;align-items:center;gap:8px;font-size:13px;line-height:1.4;color:var(--dim);margin-bottom:10px}
-.meta-line{font-size:13px;line-height:1.5;color:var(--dim);margin:12px 0 0;font-variant-numeric:tabular-nums}
-.num{display:inline-block;min-width:26px;height:24px;line-height:24px;text-align:center;border-radius:7px;
-background:#232a37;color:#c9d3e6;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.dim{color:var(--mut)}
+.small{font-size:14px;line-height:1.5}
+.hint{font-size:13px;line-height:1.5;color:var(--mut);margin:10px 0 0}
+.tag{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--hair2);border-radius:5px;
+background:#FBFCFE;padding:3px 8px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;
+letter-spacing:.02em;color:var(--mut)}
+.tag .num{background:none;border:0;color:var(--ink);font-weight:500;font-size:11.5px;min-width:0;
+height:auto;line-height:1;padding:0}
+.chip{display:flex;align-items:center;gap:8px;margin:0 0 10px;font-family:"IBM Plex Mono",monospace;
+font-size:11.5px;letter-spacing:.02em;color:var(--mut)}
+.num{display:inline-block;min-width:26px;height:22px;line-height:20px;text-align:center;border-radius:5px;
+border:1px solid var(--hair2);background:#F6F8FB;color:var(--ink);font-size:11.5px;font-weight:500;
+font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
 .shelf-r{color:var(--red)}
 .shelf-g{color:var(--green)}
 .shelf-y{color:var(--amber)}
-#list{margin:0 -4px}
-.it{display:flex;gap:12px;align-items:flex-start;padding:14px 4px;border-bottom:1px solid var(--soft);cursor:pointer;touch-action:manipulation}
+.list{margin-top:12px;border:1px solid var(--hair);border-radius:9px;overflow:hidden;background:#fff}
+.it{display:flex;gap:11px;align-items:flex-start;padding:12px;border-bottom:1px solid var(--hair);
+cursor:pointer;touch-action:manipulation;background:#fff}
 .it:last-child{border-bottom:0}
-.it .bx{flex:0 0 22px;height:22px;border-radius:6px;border:1.5px solid #3c4453;display:flex;
-align-items:center;justify-content:center;font-size:14px;line-height:1;margin-top:2px;transition:background-color .12s,border-color .12s,color .12s}
-.it .txt{flex:1;font-size:17px;line-height:1.31;color:var(--txt)}
+.it .bx{flex:0 0 18px;height:18px;border-radius:4px;border:1.5px solid #C2CAD6;display:flex;
+align-items:center;justify-content:center;font-size:12px;line-height:1;margin-top:2px;color:#fff;
+transition:background-color .12s,border-color .12s,color .12s}
+.it .txt{flex:1;font-size:16.5px;line-height:1.38}
+.it.on{background:var(--cob-soft);box-shadow:inset 2px 0 0 var(--cob)}
+.it.on .bx{background:var(--cob);border-color:var(--cob)}
 .it.on .txt{font-weight:500}
-.it.on .bx{color:#0e1015;font-weight:800}
-.it.on.s-r .bx{background:var(--red);border-color:var(--red)}
-.it.on.s-g .bx{background:var(--green);border-color:var(--green)}
-.it.on.s-y .bx{background:var(--amber);border-color:var(--amber)}
-.it.on.s-0 .bx{background:var(--acc);border-color:var(--acc)}
-.cnt{font-size:13px;line-height:1.5;color:var(--dim);margin:14px 0 0;font-variant-numeric:tabular-nums}
-.cnt.ok{color:var(--green)}
-button{font:inherit;font-size:17px;font-weight:600;width:100%;min-height:52px;padding:14px 16px;
-border-radius:12px;border:1px solid #2a313f;background:#1b212b;color:var(--txt);margin:8px 0;cursor:pointer;touch-action:manipulation}
-button:active{opacity:.9}
-button.primary{background:var(--acc);border-color:var(--acc);color:#fff}
-button.ghost{background:transparent;border-color:transparent;color:var(--dim);font-size:15px;
+.cnt{display:flex;align-items:center;gap:9px;margin-top:11px}
+.cnt .v{color:var(--mut)}
+.cnt.ok .v{color:var(--green)}
+.cnt .mini{flex:1;height:3px;background:var(--hair2);border-radius:2px;overflow:hidden}
+.cnt .mini i{display:block;height:3px;background:var(--cob);transform-origin:left;transition:transform .25s}
+button{font:inherit;font-size:16px;font-weight:500;width:100%;min-height:50px;padding:13px 16px;
+border-radius:8px;border:1px solid var(--hair2);background:#fff;color:var(--ink);margin:8px 0;
+cursor:pointer;touch-action:manipulation}
+button:active{background:#F6F8FB}
+button.primary{background:var(--cob);border-color:var(--cob);color:#fff;font-weight:600}
+button.primary:active{background:#1F42BE}
+button.ghost{background:transparent;border-color:transparent;color:var(--mut);font-size:15px;
 font-weight:400;min-height:44px;padding:8px}
-button:focus-visible,.it:focus-visible,.row:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+button:focus-visible,.it:focus-visible,.row:focus-visible{outline:2px solid var(--cob);outline-offset:2px}
 #app [tabindex="-1"]:focus{outline:none}
-.pill{display:inline-flex;flex-direction:column;gap:2px;background:#1b212b;border:1px solid var(--line);
-border-radius:10px;padding:9px 12px;margin:0 6px 6px 0;font-size:13px;line-height:1.3;color:var(--dim)}
-.pill b{font-size:21px;line-height:1.1;font-weight:650;color:var(--txt);font-variant-numeric:tabular-nums}
-.verdict{border-left:3px solid #2a313f;padding:2px 0 2px 13px;margin:14px 0 0;font-size:17px;line-height:1.45}
-.verdict b{display:block;margin-bottom:4px;font-size:17px;font-weight:650}
+.pill{display:inline-flex;align-items:baseline;gap:6px;border:1px solid var(--hair);background:#FBFCFE;
+border-radius:7px;padding:7px 10px;margin:0 6px 6px 0;font-size:12.5px;line-height:1.3;color:var(--mut)}
+.pill b{font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:500;color:var(--ink);
+font-variant-numeric:tabular-nums}
+.verdict{border:1px solid var(--hair);border-left:3px solid var(--hair2);border-radius:8px;
+padding:12px 13px;margin:14px 0 0;font-size:16px;line-height:1.45;background:#FBFCFE}
+.verdict b{display:block;margin-bottom:4px;font-size:15px;font-weight:600;letter-spacing:-.005em}
 .verdict.r{border-left-color:var(--red)}
 .verdict.g{border-left-color:var(--green)}
 .verdict.y{border-left-color:var(--amber)}
-.ex{font-size:17px;line-height:1.5;color:var(--dim);margin:6px 0}
-.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 2px;
-border-bottom:1px solid var(--soft);cursor:pointer;font-size:17px;touch-action:manipulation}
+.verdict .small{display:block;margin:2px 0 6px}
+.ex{font-size:16px;line-height:1.5;color:var(--mut);margin:6px 0}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 2px;
+border-bottom:1px solid var(--hair);cursor:pointer;font-size:16.5px;touch-action:manipulation}
 .row:last-child{border-bottom:0}
 .row .t{flex:1;min-width:0;line-height:1.4;font-weight:500}
-.row .c{font-size:13px;line-height:1.4;color:var(--dim);white-space:nowrap;font-variant-numeric:tabular-nums}
+.row .c{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5;color:var(--mut);
+white-space:nowrap;font-variant-numeric:tabular-nums}
+.meta{display:flex;align-items:center;gap:8px;font-size:13px;line-height:1.4;color:var(--mut);margin-bottom:10px}
+.meta-line{font-size:13px;line-height:1.5;color:var(--mut);margin:12px 0 0;font-variant-numeric:tabular-nums}
 #ft{position:fixed;left:0;right:0;bottom:0;display:none;gap:8px;
 padding:10px 12px calc(10px + env(safe-area-inset-bottom));
-background:rgba(14,16,21,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);z-index:9}
-#ft button{margin:0;flex:1;padding:13px 8px;min-height:52px}
+background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--hair);z-index:9}
+#ft button{margin:0;flex:1;padding:12px 8px;min-height:48px}
 #ft button.primary{flex:1.6}
-textarea{width:100%;min-height:200px;background:#11151c;color:#cfd7e6;border:1px solid var(--line);
-border-radius:12px;padding:12px;font:400 16px/1.5 ui-monospace,Menlo,monospace;resize:vertical}
+textarea{width:100%;min-height:200px;background:#FBFCFE;color:var(--ink);border:1px solid var(--hair2);
+border-radius:9px;padding:12px;font:400 16px/1.5 "IBM Plex Mono",ui-monospace,Menlo,monospace;resize:vertical}
 .steps{counter-reset:s;margin:0 0 4px;padding:0;list-style:none}
-.steps li{position:relative;padding:0 0 14px 32px;font-size:17px;line-height:1.45}
-.steps li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:2px;width:22px;height:22px;
-border-radius:50%;background:#232a37;color:#c9d3e6;font-size:12px;font-weight:600;display:flex;
+.steps li{position:relative;padding:0 0 14px 32px;font-size:16.5px;line-height:1.45}
+.steps li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:2px;width:21px;height:21px;
+border-radius:5px;border:1px solid var(--hair2);background:#F6F8FB;color:var(--ink);
+font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;display:flex;
 align-items:center;justify-content:center}
-b.hl{font-weight:650}
-a{color:#6f9df0}
+b.hl{font-weight:600}
+a{color:var(--cob)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style></head>
 <body><div class="wrap">
-<div class="top"><div class="bar"><i id="pb"></i></div><div class="pinfo" id="pinfo"></div></div>
+<div class="top"><div class="seg" id="seg"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="prow"><span class="mono" id="pinfo"></span><span class="mono" id="pmeta"></span></div></div>
 <div id="app"></div>
 </div>
 <div id="ft"></div>
@@ -139,7 +162,9 @@ document.addEventListener('keydown',function(e){
 });
 function updateBar(){
   var p=Object.keys(S.sk).length;
-  document.getElementById('pb').style.transform='scaleX('+(p/TOTAL).toFixed(4)+')';
+  var segs=document.querySelectorAll('#seg i');
+  var fill=Math.round(p/TOTAL*segs.length);
+  for(var i=0;i<segs.length;i++)segs[i].className=(i<fill?'f':'');
   document.getElementById('pinfo').textContent=p+' / '+TOTAL+' полок';
 }
 function idxOf(n,k){for(var i=0;i<STEPS.length;i++){if(STEPS[i].n===n&&STEPS[i].k===k)return i}return -1}
@@ -164,19 +189,21 @@ function goStep(i){
   var arr=S.ans[st.n][k]||(S.ans[st.n][k]=[]);
   var sh=shelves(d), pos=sh.indexOf(k)+1, info=SH[k];
   var h='<div class="card">'+
-    '<div class="meta"><span class="num">'+d.n+'</span><span>'+BT[d.b]+
-      (sh.length>1?', полка '+pos+' из '+sh.length:'')+'</span></div>'+
+    '<div class="tag"><span class="num">№'+d.n+'</span><span>'+BT[d.b].toLowerCase()+
+      ''+'</span></div>'+
     '<h2>'+escH(d.t)+': <span class="shelf-'+info.c+'">'+info.n+'</span></h2>'+
     (info.hint?'<p class="hint">'+info.hint+'</p>':'')+
-    '<div id="list">';
+    '<div class="list" id="list">';
   (d[k]||[]).forEach(function(txt,j){
     var on=arr.indexOf(j)>=0;
     h+='<div class="it s-'+info.c+(on?' on':'')+'" role="checkbox" tabindex="0" aria-checked="'+(on?'true':'false')+'" onclick="mark(this,'+j+')"><div class="bx">'+(on?'✓':'')+
        '</div><div class="txt">'+escH(txt)+'</div></div>';
   });
-  h+='</div><div class="cnt'+(arr.length>=2?' ok':'')+'" id="cnt" role="status">'+cntTxt(arr.length)+'</div></div>';
+  h+='</div><div class="cnt'+(arr.length>=2?' ok':'')+'" id="cnt"><span class="v mono" role="status">'+cntTxt(arr.length)+'</span><span class="mini"><i style="transform:scaleX('+Math.min(arr.length/2,1).toFixed(2)+')"></i></span></div></div>';
   window.__cur={n:st.n,k:k,i:i};
   paint(h,true);
+  var pm=document.getElementById('pmeta');
+  if(pm)pm.textContent='полка '+pos+' из '+sh.length;
   var ft=document.getElementById('ft');
   ft.style.display='flex';
   ft.innerHTML='<button aria-label="Назад на полку" onclick="goStep('+(i-1)+')">←</button>'+
@@ -192,7 +219,9 @@ function mark(el,j){
   var bx=el.querySelector('.bx'); bx.textContent=el.classList.contains('on')?'✓':'';
   save();
   var cnt=document.getElementById('cnt');
-  if(cnt){cnt.textContent=cntTxt(a.length);cnt.className='cnt'+(a.length>=2?' ok':'')}
+  if(cnt){cnt.className='cnt'+(a.length>=2?' ok':'');
+    var v=cnt.querySelector('.v'); if(v)v.textContent=cntTxt(a.length);
+    var mi=cnt.querySelector('.mini i'); if(mi)mi.style.transform='scaleX('+Math.min(a.length/2,1).toFixed(2)+')'}
 }
 function nextStep(){
   var c=window.__cur; if(!c)return;
@@ -207,7 +236,7 @@ function skipStep(){
 function goChapter(n){
   var d=BY[n]; var a=S.ans[n]||{}; var sh=shelves(d);
   var h='<div class="card">'+
-    '<div class="chip"><span class="num">'+d.n+'</span>'+BT[d.b]+'</div>'+
+    '<div class="chip"><span class="num">№'+d.n+'</span><span>'+BT[d.b].toLowerCase()+'</span></div>'+
     '<h2>'+escH(d.t)+'</h2><p class="dim small">Полки пройдены. Отметь, что отпечаталось — можно вернуться в любую.</p>'+
     verdictHTML(a);
   h+='<div style="margin-top:14px">';
@@ -221,6 +250,8 @@ function goChapter(n){
   h+='</div>';
   window.__cur=null;
   paint(h,true);
+  var pm=document.getElementById('pmeta');
+  if(pm)pm.textContent='';
   var ft=document.getElementById('ft'); ft.style.display='flex';
   var lastIdx=idxOf(n,sh[sh.length-1]);
   var nxt=STEPS[lastIdx+1];
@@ -247,8 +278,8 @@ function goHome(){
    '<div class="ex"><span class="shelf-g">Люблю напряжённо работать</span>&nbsp;— проявление силы</div>'+
    '<div class="ex"><span class="shelf-y">Могу быть трудоголиком</span>&nbsp;— перегиб</div></div>'+
    '<button onclick="showHow()">Как понять, развито у меня или нет</button>'+
-   '<div style="margin:12px 0 4px"><span class="pill"><b>'+doneCh+'</b>глав из '+DATA.length+'</span>'+
-   '<span class="pill"><b>'+p+'</b>карточек из '+TOTAL+'</span></div>'+
+   '<div style="margin:12px 0 4px"><span class="pill"><b>'+doneCh+'</b> глав из '+DATA.length+'</span>'+
+   '<span class="pill"><b>'+p+'</b> карточек из '+TOTAL+'</span></div>'+
    (nx?'<button class="primary" onclick="goStep('+idxOf(nx.n,nx.k)+')">'+(p?'Продолжить':'Начать')+' — №'+nx.n+' '+escH(BY[nx.n].t)+', '+SH[nx.k].n+'</button>'
       :'<button class="primary" onclick="showResults()">Показать итоги</button>')+
    '<button onclick="showList(\'competency\')">Все компетенции (1–67)</button>'+
@@ -258,6 +289,7 @@ function goHome(){
    '<button class="ghost" onclick="resetAll()">Сбросить все ответы</button></div>';
   window.__cur=null;
   paint(h,false);
+  var pm0=document.getElementById('pmeta'); if(pm0)pm0.textContent='';
 }
 function showHow(){
   var h='<div class="card"><h2>Как понять, развито или нет</h2>'+
@@ -305,7 +337,7 @@ function showResults(){
     '<span class="pill"><b>'+empty.length+'</b>без ответа</span></div>';
   var block=function(title,sub,arr,cls,nk){
     var s='<div class="verdict '+cls+'"><b>'+title+'</b><span class="dim small">'+sub+'</span>';
-    if(!arr.length)return s+'<div class="dim small" style="margin-top:6px">пока пусто</div></div>';
+    if(!arr.length)return s+'<div class="dim small" style="margin-top:2px">пока пусто</div></div>';
     arr.forEach(function(r){
       s+='<div class="row" role="button" tabindex="0" onclick="goStep('+idxOf(r.d.n,nk)+')"><div class="t"><span class="num">'+r.d.n+'</span>'+escH(r.d.t)+
          '</div><div class="c">'+r.s[nk]+' отм. ›</div></div>';
@@ -322,6 +354,7 @@ function showResults(){
       '<button class="ghost" onclick="goHome()">← На главную</button></div>';
   window.__cur=null;
   paint(h,false);
+  var pm0=document.getElementById('pmeta'); if(pm0)pm0.textContent='';
   var ta=document.getElementById('txt'); if(ta)ta.value=exportText(def,over,str,empty);
 }
 function exportText(def,over,str,empty){
