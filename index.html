@@ -2,71 +2,72 @@
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1117">
 <title>Ломингер — оценка компетенций</title>
 <style>
 :root{--bg:#0f1117;--card:#181b23;--line:#262b36;--txt:#e9ecf3;--dim:#98a2b3;--acc:#4f8cff;
 --red:#ff6b6b;--green:#3ddc97;--amber:#ffb84d}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-padding:14px 12px calc(84px + env(safe-area-inset-bottom))}
+body{margin:0;background:var(--bg);color:var(--txt);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+padding:12px 10px calc(96px + env(safe-area-inset-bottom))}
 .wrap{max-width:680px;margin:0 auto}
-.top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.top{display:flex;align-items:center;gap:10px;margin:0 2px 10px}
 .bar{flex:1;height:6px;background:#232734;border-radius:4px;overflow:hidden}
 .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#4f8cff,#3ddc97);transition:width .25s}
 .pinfo{font-size:12px;color:var(--dim);white-space:nowrap}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
-h1{font-size:20px;margin:0 0 6px}
-h2{font-size:18px;margin:4px 0 10px;line-height:1.35}
-h3{font-size:14px;margin:0 0 8px;text-transform:uppercase;letter-spacing:.04em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px 16px;margin-bottom:12px}
+h1{font-size:21px;line-height:1.3;margin:0 0 8px}
+h2{font-size:19px;line-height:1.3;margin:2px 0 8px}
+h3{font-size:13px;margin:0 0 6px;text-transform:uppercase;letter-spacing:.05em}
 p{margin:0 0 10px}
 .dim{color:var(--dim)}
-.small{font-size:13px}
-.num{display:inline-block;min-width:26px;height:22px;line-height:22px;text-align:center;border-radius:7px;
-background:#2a2f3d;color:#c9d3e6;font-size:12px;font-weight:700;margin-right:8px;vertical-align:2px}
-.tag{display:inline-block;font-size:11px;color:var(--dim);border:1px solid var(--line);border-radius:20px;padding:1px 9px}
-.grp{border-radius:12px;padding:11px 12px;margin:10px 0;border:1px solid var(--line);background:#151822}
-.grp.r{border-color:#4a2528;background:#1c1418}
-.grp.g{border-color:#1f4436;background:#121b18}
-.grp.y{border-color:#4a3b1e;background:#1c1810}
-.grp h3{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.grp.r h3{color:#ff8f8f}.grp.g h3{color:#5fe0aa}.grp.y h3{color:#ffc470}
-.grp h3 span{font-size:12px;font-weight:400;color:var(--dim);text-transform:none;letter-spacing:0}
-.it{display:flex;gap:10px;align-items:flex-start;padding:9px 8px;border-radius:9px;margin:2px 0;cursor:pointer;transition:background .12s}
-.it:active{background:#1f2430}
-.it .bx{flex:0 0 21px;height:21px;border-radius:6px;border:1.5px solid #3a4152;display:flex;align-items:center;justify-content:center;
-font-size:13px;color:#0f1117;margin-top:1px}
-.it.on{background:#232a3a}
+.small{font-size:13.5px}
+.num{display:inline-block;min-width:28px;height:24px;line-height:24px;text-align:center;border-radius:8px;
+background:#2a2f3d;color:#c9d3e6;font-size:13px;font-weight:700;margin-right:8px;vertical-align:1px}
+.chip{display:inline-flex;align-items:center;gap:13px;font-size:12px;color:var(--dim);margin-bottom:8px}
+.shelf{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+border-radius:20px;padding:2px 10px;margin-left:6px}
+.shelf-r{color:#ff9a9a;background:#3a1d20;border:1px solid #4a2528}
+.shelf-g{color:#7ce7b8;background:#123028;border:1px solid #1f4436}
+.shelf-y{color:#ffcf8a;background:#3a2e16;border:1px solid #4a3b1e}
+.it{display:flex;gap:11px;align-items:flex-start;padding:13px 10px;border-radius:11px;margin:3px 0;
+cursor:pointer;transition:background .12s;border:1px solid transparent}
+.it:active{background:#20242f}
+.it .bx{flex:0 0 24px;height:24px;border-radius:7px;border:1.6px solid #3f4757;display:flex;
+align-items:center;justify-content:center;font-size:15px;color:#0f1117;margin-top:1px;transition:.12s}
+.it .txt{flex:1;font-size:16.5px;line-height:1.42}
+.it.on{background:#232a3a;border-color:#31405c}
 .it.on .bx{background:var(--acc);border-color:var(--acc);color:#fff}
-.grp.r .it.on .bx{background:var(--red);border-color:var(--red)}
-.grp.g .it.on .bx{background:var(--green);border-color:var(--green)}
-.grp.y .it.on .bx{background:var(--amber);border-color:var(--amber)}
-.it .txt{flex:1;font-size:15px}
-.it.on .txt{color:#fff}
-button{font:inherit;width:100%;padding:13px 14px;border-radius:11px;border:1px solid var(--line);background:#1e222d;color:var(--txt);
-margin:6px 0;cursor:pointer;text-align:center}
-button:active{transform:scale(.995)}
+.cnt{font-size:12.5px;color:var(--dim);margin:10px 4px 0}
+.cnt.ok{color:#7ce7b8}
+button{font:inherit;width:100%;min-height:48px;padding:13px 14px;border-radius:12px;border:1px solid var(--line);
+background:#1e222d;color:var(--txt);margin:7px 0;cursor:pointer;text-align:center}
+button:active{transform:scale(.995);opacity:.92}
 button.primary{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}
-button.ghost{background:transparent;border-color:transparent;color:var(--dim);font-size:13px;padding:8px}
-.pill{display:inline-flex;align-items:center;gap:6px;background:#1e222d;border:1px solid var(--line);border-radius:10px;padding:6px 10px;margin:3px 4px 3px 0;font-size:13px;color:var(--dim)}
+button.ghost{background:transparent;border-color:transparent;color:var(--dim);font-size:13.5px;min-height:40px;padding:8px}
+.pill{display:inline-flex;align-items:center;gap:6px;background:#1e222d;border:1px solid var(--line);
+border-radius:10px;padding:6px 11px;margin:3px 5px 3px 0;font-size:13px;color:var(--dim)}
 .pill b{color:var(--txt);font-size:15px}
-.verdict{border-radius:12px;padding:12px;margin-top:12px;font-size:14px;border:1px solid var(--line);background:#151822}
-.verdict b{display:block;margin-bottom:4px;font-size:15px}
+.verdict{border-radius:14px;padding:13px;margin-top:12px;font-size:15px;border:1px solid var(--line);background:#151822}
+.verdict b{display:block;margin-bottom:5px;font-size:16px}
 .verdict.r{border-color:#4a2528;background:#1c1418}.verdict.g{border-color:#1f4436;background:#121b18}
 .verdict.y{border-color:#4a3b1e;background:#1c1810}
-.row{display:flex;justify-content:space-between;gap:10px;padding:10px 6px;border-bottom:1px solid #20242e;cursor:pointer;font-size:15px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 4px;
+border-bottom:1px solid #20242e;cursor:pointer;font-size:16px}
 .row:last-child{border-bottom:0}
-.row .t{flex:1}
-.row .c{font-size:12px;color:var(--dim);white-space:nowrap;align-self:center}
-#ft{position:fixed;left:0;right:0;bottom:0;display:none;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
-background:rgba(15,17,23,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);z-index:9}
-#ft button{margin:0;flex:1;padding:13px 8px}
-#ft button.primary{flex:2}
-textarea{width:100%;min-height:190px;background:#12151d;color:#cfd7e6;border:1px solid var(--line);border-radius:11px;
-padding:11px;font:13px/1.45 ui-monospace,Menlo,monospace;resize:vertical}
+.row .t{flex:1;line-height:1.35}
+.row .c{font-size:12.5px;color:var(--dim);white-space:nowrap}
+#ft{position:fixed;left:0;right:0;bottom:0;display:none;gap:8px;padding:9px 10px calc(9px + env(safe-area-inset-bottom));
+background:rgba(15,17,23,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line);z-index:9}
+#ft button{margin:0;flex:1;padding:13px 6px;min-height:50px}
+#ft button.primary{flex:1.5}
+textarea{width:100%;min-height:200px;background:#12151d;color:#cfd7e6;border:1px solid var(--line);
+border-radius:12px;padding:11px;font:13px/1.45 ui-monospace,Menlo,monospace;resize:vertical}
 .steps{counter-reset:s;margin:0;padding:0;list-style:none}
-.steps li{position:relative;padding:0 0 12px 34px;font-size:15px}
-.steps li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:1px;width:23px;height:23px;border-radius:50%;
-background:#2a3040;color:#c9d3e6;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.steps li{position:relative;padding:0 0 13px 34px;font-size:15.5px}
+.steps li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:1px;width:24px;height:24px;
+border-radius:50%;background:#2a3040;color:#c9d3e6;font-size:12px;font-weight:700;display:flex;
+align-items:center;justify-content:center}
 b.hl{color:#fff}
 a{color:var(--acc)}
 </style></head>
@@ -81,135 +82,174 @@ const BY = {}; DATA.forEach(function(d){BY[d.n]=d});
 const KEY='lominger_v2';
 let S={};
 try{S=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){S={}}
-S.done=S.done||{}; S.ans=S.ans||{}; S.intro=S.intro||false;
-const TOTAL=DATA.length;
+S.ans=S.ans||{}; S.sk=S.sk||{}; S.done=S.done||{}; S.intro=S.intro||false;
+const ORDER=['nr','p','o','m'];
+const SH={
+ nr:{n:'что мешает',c:'r',hint:'Спроси себя: «так со мной бывало за последние полгода?» Вспомнил два разных случая — отмечай.'},
+ p:{n:'проявления силы',c:'g',hint:'Делаешь так регулярно, без надрыва, и получается — отмечай.'},
+ o:{n:'перегиб',c:'y',hint:'Делаешь так слишком часто или слишком сильно, и это уже мешает — отмечай.'},
+ m:{n:'средний уровень',c:'',hint:'Середина: и не мешает, и не опора.'}
+};
+const BT={competency:'компетенция',criteria:'критерий эффективности',stopper:'стоппер карьеры'};
+function shelves(d){return ORDER.filter(function(k){return (d[k]||[]).length>0})}
+const STEPS=[]; DATA.forEach(function(d){shelves(d).forEach(function(k){STEPS.push({n:d.n,k:k})})});
+const TOTAL=STEPS.length;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 function escH(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function paint(h,foot){
-  var app=document.getElementById('app'); app.innerHTML=h;
+  document.getElementById('app').innerHTML=h;
   var ft=document.getElementById('ft');
   if(!foot){ft.style.display='none';ft.innerHTML=''}
   updateBar();
+  window.scrollTo(0,0);
 }
 function updateBar(){
-  var d=Object.keys(S.done).length;
-  document.getElementById('pb').style.width=(d/TOTAL*100).toFixed(1)+'%';
-  document.getElementById('pinfo').textContent=d+' / '+TOTAL;
+  var p=Object.keys(S.sk).length;
+  document.getElementById('pb').style.width=(p/TOTAL*100).toFixed(1)+'%';
+  document.getElementById('pinfo').textContent=p+' / '+TOTAL+' полок';
 }
-function grpTitle(k){
-  if(k==='nr')return ['Что мешает','Спроси себя: «так со мной бывало за последние полгода?» Вспомнил два разных случая — отмечай.'];
-  if(k==='p')return ['Проявления силы','Делаешь так регулярно, без надрыва, и получается — отмечай.'];
-  if(k==='o')return ['Перегиб','Делаешь так слишком часто или слишком сильно, и это уже мешает — отмечай.'];
-  return ['Средний уровень',''];
-}
-function cntTxt(n){return n>=2?(n+' из 2 ✓'):(n+' / 2')}
+function idxOf(n,k){for(var i=0;i<STEPS.length;i++){if(STEPS[i].n===n&&STEPS[i].k===k)return i}return -1}
+function cntTxt(v){return v>=2?(v+' из 2 ✓ достаточно'):(v+' / 2 нужно')}
 function verdict(a){
   var c=function(k){return (a[k]||[]).length};
   var nr=c('nr'),p=c('p'),o=c('o');
   if(nr>=2&&nr>=p&&nr>=o)return ['r','Зона роста','Ты узнал себя в '+nr+' признаках дефицита. По методике книги этого достаточно, чтобы считать компетенцию слабой. В план развития: одна привычка на 3 месяца и человек, который даёт обратную связь.'];
   if(o>=2&&o>=p&&o>=nr)return ['y','Перегиб','Сила есть, но она перекручена: '+o+' признака перегиба. Это не лечится развитием — только дозировкой и паузой перед действием.'];
   if(p>=2)return ['g','Сильная сторона','Ты отметил '+p+' проявления силы. Это опора: её не развивают, а осознанно используют и не дают перерасти в перегиб.'];
-  if(nr+p+o===0)return ['','Пока без выводов','Ничего не отмечено. Если ни один пункт не про тебя — это тоже ответ, жми «Пропустить».'];
-  return ['','Пока не выражено','Одна отметка — по методике книги это ещё не сигнал, а случайность. Можно пропустить.'];
+  if(nr+p+o===0)return ['','Пока без выводов','Ничего не отмечено. Если ни один пункт не про тебя — это тоже ответ.'];
+  return ['','Пока не выражено','Одна отметка — по методике книги это ещё не сигнал, а случайность.'];
 }
-function goCard(n){
-  var d=BY[n]; var a=(S.ans&&S.ans[n])||{};
-  var h='<div class="card"><div style="margin-bottom:8px"><span class="num">'+d.n+'</span>'+
-    '<span class="tag">'+(d.b==='competency'?'компетенция':d.b==='criteria'?'критерий эффективности':'стоппер карьеры')+'</span></div>'+
-    '<h2>'+escH(d.t)+'</h2>'+
-    '<p class="dim small">Это не экзамен и не самооценка по 10-балльной. Признак — конкретный поступок: отмечай то, что уже случалось с тобой. 2–4 самых точных пункта достаточно.</p>';
-  ['nr','p','o','m'].forEach(function(k){
-    var list=d[k]||[]; if(!list.length)return;
-    var ti=grpTitle(k);
-    h+='<div class="grp '+({nr:'r',p:'g',o:'y',m:''}[k])+'"><h3>'+ti[0]+'<span>'+cntTxt((a[k]||[]).length)+'</span></h3>'+
-       (ti[1]?'<div class="dim small" style="margin:-4px 0 8px">'+ti[1]+'</div>':'');
-    list.forEach(function(txt,i){
-      var on=(a[k]||[]).indexOf(i)>=0;
-      h+='<div class="it'+(on?' on':'')+'" onclick="mark(\''+k+'\','+i+',this)"><div class="bx">'+(on?'✓':'')+'</div><div class="txt">'+escH(txt)+'</div></div>';
-    });
-    h+='</div>';
+function verdictHTML(a){var v=verdict(a);
+  return '<div class="verdict '+(v[0]||'')+'"><b>'+v[1]+'</b>'+v[2]+'</div>'}
+
+function goStep(i){
+  if(i<0){goHome();return}
+  if(i>=STEPS.length){showResults();return}
+  var st=STEPS[i], d=BY[st.n], k=st.k;
+  S.ans[st.n]=S.ans[st.n]||{};
+  var arr=S.ans[st.n][k]||(S.ans[st.n][k]=[]);
+  var sh=shelves(d), pos=sh.indexOf(k)+1, info=SH[k];
+  var h='<div class="card">'+
+    '<div class="chip"><span class="num">'+d.n+'</span>'+BT[d.b]+
+      '<span class="shelf shelf-'+info.c+'">'+info.n+'</span>'+
+      (sh.length>1?'<span>полка '+pos+' из '+sh.length+'</span>':'')+'</div>'+
+    '<h2>'+escH(d.t)+' — '+info.n+'</h2>'+
+    (info.hint?'<p class="dim small">'+info.hint+'</p>':'')+
+    '<div id="list">';
+  (d[k]||[]).forEach(function(txt,j){
+    var on=arr.indexOf(j)>=0;
+    h+='<div class="it'+(on?' on':'')+'" onclick="mark(this,'+j+')"><div class="bx">'+(on?'✓':'')+
+       '</div><div class="txt">'+escH(txt)+'</div></div>';
   });
-  if(d.c&&d.c.length)h+='<p class="dim small">Компенсаторы по книге — компетенции, которые закрывают перегиб: '+d.c.join(', ')+'</p>';
-  h+='<div id="vd">'+verdictHTML(a)+'</div></div>';
+  h+='</div><div class="cnt'+(arr.length>=2?' ok':'')+'" id="cnt">'+cntTxt(arr.length)+'</div></div>';
+  window.__cur={n:st.n,k:k,i:i};
   paint(h,true);
-  window.__cur=n;
   var ft=document.getElementById('ft');
   ft.style.display='flex';
-  ft.innerHTML='<button onclick="goHome()">←</button>'+
-    '<button onclick="goSkip('+n+')">Пропустить</button>'+
-    '<button class="primary" onclick="goNext('+n+')">Дальше →</button>';
+  ft.innerHTML='<button onclick="goStep('+(i-1)+')">←</button>'+
+    '<button onclick="skipStep()">Пропустить</button>'+
+    '<button class="primary" onclick="nextStep()">Дальше →</button>';
 }
-function verdictHTML(a){
-  var v=verdict(a);
-  return '<div class="verdict '+(v[0]||'')+'"><b>'+v[1]+'</b>'+v[2]+'</div>';
-}
-function mark(k,i,el){
-  var n=window.__cur; var a=S.ans[n]||(S.ans[n]={});
-  a[k]=a[k]||[];
-  var p=a[k].indexOf(i);
-  if(p>=0)a[k].splice(p,1); else a[k].push(i);
+function mark(el,j){
+  var c=window.__cur; var a=(S.ans[c.n]||{})[c.k]||(S.ans[c.n][c.k]=[]);
+  var p=a.indexOf(j);
+  if(p>=0)a.splice(p,1); else a.push(j);
   el.classList.toggle('on');
   var bx=el.querySelector('.bx'); bx.textContent=el.classList.contains('on')?'✓':'';
   save();
-  var h3=el.parentNode.querySelector('h3 span');
-  if(h3)h3.textContent=cntTxt(a[k].length);
-  var vd=document.getElementById('vd'); if(vd)vd.innerHTML=verdictHTML(a);
+  var cnt=document.getElementById('cnt');
+  if(cnt){cnt.textContent=cntTxt(a.length);cnt.className='cnt'+(a.length>=2?' ok':'')}
 }
-function goNext(n){
-  S.done[n]=1; save();
-  var idx=-1; for(var i=0;i<DATA.length;i++)if(DATA[i].n===n){idx=i;break}
-  for(var j=idx+1;j<DATA.length;j++)if(!S.done[DATA[j].n])return goCard(DATA[j].n);
-  showResults();
+function nextStep(){
+  var c=window.__cur; if(!c)return;
+  S.sk[c.n+'|'+c.k]=1; save();
+  var nx=STEPS[c.i+1];
+  if(nx&&nx.n===c.n)goStep(c.i+1); else goChapter(c.n);
 }
-function goSkip(n){S.ans[n]=S.ans[n]||{};S.done[n]=1;save();goNext(n)}
-function nextUnanswered(){
-  for(var i=0;i<DATA.length;i++)if(!S.done[DATA[i].n])return DATA[i].n;
+function skipStep(){
+  var c=window.__cur; if(!c)return;
+  S.sk[c.n+'|'+c.k]=1; save(); nextStep();
+}
+function goChapter(n){
+  var d=BY[n]; var a=S.ans[n]||{}; var sh=shelves(d);
+  var h='<div class="card">'+
+    '<div class="chip"><span class="num">'+d.n+'</span>'+BT[d.b]+'</div>'+
+    '<h2>'+escH(d.t)+'</h2><p class="dim small">Полки пройдены. Отметь, что отпечаталось — можно вернуться в любую.</p>'+
+    verdictHTML(a);
+  h+='<div style="margin-top:14px">';
+  sh.forEach(function(k){
+    var c=(a[k]||[]).length, col=SH[k].c;
+    h+='<div class="row" onclick="goStep('+idxOf(n,k)+')"><div class="t">'+
+       '<span class="shelf shelf-'+col+'" style="margin:0 8px 0 0">'+SH[k].n+'</span></div>'+
+       '<div class="c">'+c+' отм. ›</div></div>';
+  });
+  h+='</div>';
+  if(d.c&&d.c.length)h+='<p class="dim small" style="margin-top:12px">Компенсаторы по книге: '+d.c.join(', ')+'</p>';
+  h+='</div>';
+  window.__cur=null;
+  paint(h,true);
+  var ft=document.getElementById('ft'); ft.style.display='flex';
+  var lastIdx=idxOf(n,sh[sh.length-1]);
+  var nxt=STEPS[lastIdx+1];
+  ft.innerHTML='<button onclick="goStep('+lastIdx+')">←</button>'+
+    (nxt?'<button class="primary" onclick="goStep('+(lastIdx+1)+')">Дальше — №'+nxt.n+'</button>'
+        :'<button class="primary" onclick="showResults()">К итогам</button>');
+}
+function nextUnpassed(){
+  for(var i=0;i<STEPS.length;i++){var s=STEPS[i];if(!S.sk[s.n+'|'+s.k])return s}
   return null;
 }
 function goHome(){
-  var done=Object.keys(S.done).length; var nx=nextUnanswered();
+  var nx=nextUnpassed(); var p=Object.keys(S.sk).length;
+  var doneCh=DATA.filter(function(d){return shelves(d).every(function(k){return S.sk[d.n+'|'+k]})}).length;
   var h='<div class="card"><h1>Ломингер: что у тебя развито</h1>'+
-   '<p class="dim small">Оценка по книге «FYI: For Your Improvement» — 67 компетенций, 9 критериев работы, 19 стопперов карьеры.</p>'+
+   '<p class="dim small">Оценка по книге «FYI: For Your Improvement»: 67 компетенций, 9 критериев работы, 19 стопперов карьеры.</p>'+
    '<ol class="steps">'+
    '<li><b class="hl">Признак — это поступок, а не ярлык.</b> Читаешь пункт как «так со мной бывало?». Вспомнил два разных случая за полгода — отмечай.</li>'+
-   '<li>В карточке три полки: <b class="hl">что мешает</b> (делаю так — и это тормозит), <b class="hl">проявления силы</b> (делаю так — и работает), <b class="hl">перегиб</b> (делаю то же слишком сильно).</li>'+
-   '<li><b class="hl">Две отметки на одной полке — вывод</b> по компетенции. Одна — случайность. Ни одной — нейтрально, пропускай.</li>'+
+   '<li>У компетенции <b class="hl">три отдельные карточки</b>: что мешает, проявления силы, перегиб. Открываешь по одной — не надо листать длинную страницу.</li>'+
+   '<li><b class="hl">Две отметки на одной карточке — вывод.</b> Одна — случайность. Ни одной — нейтрально, пропускай.</li>'+
    '</ol>'+
-   '<div class="grp"><h3>Пример, как это работает</h3>'+
-   '<div class="dim small" style="margin:-4px 0 10px">«Ориентация на действие»</div>'+
-   '<div class="small">«Могу тянуть время с решением» — <b>что мешает</b><br>'+
-   '«Быстро берусь, не боюсь рискнуть» — <b>проявление силы</b><br>'+
-   '«Решаю так быстро, что лезу без анализа» — <b>перегиб</b></div>'+
-   '<div class="dim small" style="margin-top:10px">Два «мешает» — зона роста. Два «силы» — опора. Два «перегиба» — дозировать.</div></div>'+
+   '<div class="verdict" style="margin-bottom:12px"><b>Пример на «Ориентации на действие»</b>'+
+   '<div class="small">«Могу тянуть время с решением» — что мешает<br>'+
+   '«Люблю напряжённо работать» — проявление силы<br>'+
+   '«Могу быть трудоголиком» — перегиб</div></div>'+
    '<button onclick="showHow()">Как понять, развито у меня или нет</button>'+
-   '<div class="pill"><b>'+done+'</b>из '+DATA.length+' пройдено</div>'+
-   (nx?'<button class="primary" onclick="goCard('+nx+')">'+(done?'Продолжить':'Начать')+' — №'+nx+' '+escH(BY[nx].t)+'</button>':'<button class="primary" onclick="showResults()">Показать итоги</button>')+
+   '<div><span class="pill"><b>'+doneCh+'</b>из '+DATA.length+' глав</span>'+
+   '<span class="pill"><b>'+p+'</b>из '+TOTAL+' карточек</span></div>'+
+   (nx?'<button class="primary" onclick="goStep('+idxOf(nx.n,nx.k)+')">'+(p?'Продолжить':'Начать')+' — №'+nx.n+' '+escH(BY[nx.n].t)+', '+SH[nx.k].n+'</button>'
+      :'<button class="primary" onclick="showResults()">Показать итоги</button>')+
    '<button onclick="showList(\'competency\')">Все компетенции (1–67)</button>'+
    '<button onclick="showList(\'criteria\')">Критерии эффективности (81–89)</button>'+
    '<button onclick="showList(\'stopper\')">Стопперы карьеры (101–119)</button>'+
    '<button onclick="showResults()">Итоги и текст для отчёта</button>'+
    '<button class="ghost" onclick="resetAll()">Сбросить все ответы</button></div>';
+  window.__cur=null;
   paint(h,false);
 }
 function showHow(){
   var h='<div class="card"><h2>Как понять, развито или нет</h2>'+
    '<p>Компетенцию нельзя оценить «в целом»: «я хорошо веду переговоры» — каждый раз по-разному. В книге у каждой компетенции есть наблюдаемые признаки: как она выглядит, когда её нет, когда она есть и когда её переложили. Поэтому ты не ставишь себе балл, а узнаёшь себя в конкретных поступках.</p>'+
-   '<p><b class="hl">Три полки в карточке.</b><br>«Что мешает» — делаю так, и это тормозит.<br>«Проявления силы» — делаю так, и это даёт результат.<br>«Перегиб» — делаю то же, но слишком сильно, и это мешает.</p>'+
-   '<p><b class="hl">Как отмечать.</b> Возьми последние полгода. Пункт про тебя, если вспоминаешь два разных случая. Не вспоминаешь — не отмечай, сомнение всегда решается в пользу «не отмечать».</p>'+
+   '<p><b class="hl">Три карточки.</b><br>«Что мешает» — делаю так, и это тормозит.<br>«Проявления силы» — делаю так, и это даёт результат.<br>«Перегиб» — делаю то же, но слишком сильно, и это мешает.</p>'+
+   '<p><b class="hl">Как отмечать.</b> Возьми последние полгода. Пункт про тебя, если вспоминаешь два разных случая. Не вспоминаешь — не отмечай: сомнение всегда решается в пользу «не отмечать».</p>'+
    '<p><b class="hl">Почему две отметки.</b> Правило книги: один признак — совпадение, два — устойчивая привычка. Меньше двух — карточка остаётся нейтральной, и это нормальный ответ.</p>'+
    '<p><b class="hl">Что делать с итогом.</b> Зона роста — одна привычка на 3 месяца. Сильная сторона — опора, её не развивают. Перегиб — дозировать, а не качать.</p>'+
    '<button onclick="goHome()">← Понятно</button></div>';
   paint(h,false);
 }
-function resetAll(){if(confirm('Сбросить все ответы?')){S={done:{},ans:{},intro:true};save();goHome()}}
+function resetAll(){if(confirm('Сбросить все ответы?')){S={ans:{},sk:{},done:{},intro:true};save();goHome()}}
 function showList(b){
   var arr=DATA.filter(function(x){return x.b===b});
-  var h='<div class="card"><h2>'+(b==='competency'?'Компетенции':b==='criteria'?'Критерии эффективности':'Стопперы карьеры')+'</h2>';
+  var h='<div class="card"><h2>'+(b==='competency'?'Компетенции':b==='criteria'?'Критерии эффективности':'Стопперы карьеры')+'</h2>'+
+        '<p class="dim small">Открывается карточка, с которой остановился.</p>';
   arr.forEach(function(x){
-    var a=S.ans[x.n]||{}; var marks=(a.nr||[]).length+(a.p||[]).length+(a.o||[]).length+(a.m||[]).length;
-    var v=verdict(a); var col=v[0]==='r'?'#ff8f8f':v[0]==='g'?'#5fe0aa':v[0]==='y'?'#ffc470':'#98a2b3';
-    h+='<div class="row" onclick="goCard('+x.n+')"><div class="t"><span class="num">'+x.n+'</span>'+escH(x.t)+'</div>'+
-       '<div class="c" style="color:'+col+'">'+(marks?marks+' отм.':'')+(S.done[x.n]?' ✓':'')+'</div></div>';
+    var a=S.ans[x.n]||{}, sh=shelves(x);
+    var marks=0, pass=0;
+    sh.forEach(function(k){marks+=(a[k]||[]).length; if(S.sk[x.n+'|'+k])pass++});
+    var v=verdict(a); var col=v[0]==='r'?'#ff9a9a':v[0]==='g'?'#7ce7b8':v[0]==='y'?'#ffcf8a':'#98a2b3';
+    var first=null; for(var i=0;i<sh.length;i++){if(!S.sk[x.n+'|'+sh[i]]){first=sh[i];break}}
+    var tgt=first?idxOf(x.n,first):idxOf(x.n,sh[0]);
+    h+='<div class="row" onclick="goStep('+tgt+')"><div class="t"><span class="num">'+x.n+'</span>'+escH(x.t)+'</div>'+
+       '<div class="c" style="color:'+col+'">'+pass+'/'+sh.length+(marks?' · '+marks+' отм.':'')+'</div></div>';
   });
   h+='<button class="ghost" onclick="goHome()">← На главную</button></div>';
   paint(h,false);
@@ -231,26 +271,25 @@ function showResults(){
     '<span class="pill"><b>'+over.length+'</b>перегибов</span>'+
     '<span class="pill"><b>'+empty.length+'</b>без ответа</span></div>';
   var block=function(title,sub,arr,cls,nk){
-    var s='<div class="grp '+cls+'"><h3>'+title+'<span>'+arr.length+'</span></h3><div class="dim small" style="margin:-4px 0 8px">'+sub+'</div>';
-    if(!arr.length)return s+'<div class="dim small">пока пусто</div></div>';
+    var s='<div class="verdict '+cls+'"><b>'+title+'</b><span class="dim small">'+sub+'</span>';
+    if(!arr.length)return s+'<div class="dim small" style="margin-top:6px">пока пусто</div></div>';
     arr.forEach(function(r){
-      var v=r.s[nk];
-      s+='<div class="row" onclick="goCard('+r.d.n+')"><div class="t"><span class="num">'+r.d.n+'</span>'+escH(r.d.t)+'</div>'+
-         '<div class="c">'+v+' отм.</div></div>';
+      s+='<div class="row" onclick="goStep('+idxOf(r.d.n,nk)+')"><div class="t"><span class="num">'+r.d.n+'</span>'+escH(r.d.t)+
+         '</div><div class="c">'+r.s[nk]+' отм. ›</div></div>';
     });
     return s+'</div>';
   };
   h+=block('Зоны роста','2+ признака дефицита — сюда вкладываться в первую очередь',def,'r','nr');
-  h+=block('Перегибы','2+ признака перегиба — силу надо дозировать, а не развивать',over,'y','o');
+  h+=block('Перегибы','2+ признака перегиба — силу дозировать, а не развивать',over,'y','o');
   h+=block('Сильные стороны','2+ проявления силы — на это опираться',str,'g','p');
   h+='<p class="dim small" style="margin-top:14px">Готовый текст — скопируй и пришли мне, соберу план на 3 месяца:</p>'+
       '<textarea id="txt" readonly></textarea>'+
       '<button onclick="copyTxt()">Скопировать текст</button>'+
       '<button onclick="dlJson()">Скачать ответы (JSON)</button>'+
       '<button class="ghost" onclick="goHome()">← На главную</button></div>';
+  window.__cur=null;
   paint(h,false);
   var ta=document.getElementById('txt'); if(ta)ta.value=exportText(def,over,str,empty);
-  window.__exp={def:def,over:over,str:str};
 }
 function exportText(def,over,str,empty){
   var L=['ЛОМИНГЕР — мои результаты ('+new Date().toLocaleDateString('ru-RU')+')',''];
