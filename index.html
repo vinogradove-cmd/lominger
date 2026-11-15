@@ -5,71 +5,82 @@
 <meta name="theme-color" content="#0f1117">
 <title>Ломингер — оценка компетенций</title>
 <style>
-:root{--bg:#0f1117;--card:#181b23;--line:#262b36;--txt:#e9ecf3;--dim:#98a2b3;--acc:#4f8cff;
---red:#ff6b6b;--green:#3ddc97;--amber:#ffb84d}
+:root{--bg:#0e1015;--card:#161a22;--line:#242a36;--soft:#1e232d;
+--txt:#eceff5;--dim:#9aa4b5;--acc:#2f6ce0;
+--red:#e06a6a;--green:#3ba87d;--amber:#c99444}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:var(--bg);color:var(--txt);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-padding:12px 10px calc(96px + env(safe-area-inset-bottom))}
-.wrap{max-width:680px;margin:0 auto}
-.top{display:flex;align-items:center;gap:10px;margin:0 2px 10px}
-.bar{flex:1;height:6px;background:#232734;border-radius:4px;overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#4f8cff,#3ddc97);transition:width .25s}
-.pinfo{font-size:12px;color:var(--dim);white-space:nowrap}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px 16px;margin-bottom:12px}
-h1{font-size:21px;line-height:1.3;margin:0 0 8px}
-h2{font-size:19px;line-height:1.3;margin:2px 0 8px}
-h3{font-size:13px;margin:0 0 6px;text-transform:uppercase;letter-spacing:.05em}
+body{margin:0;background:var(--bg);color:var(--txt);
+font:400 17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+padding:14px 12px calc(100px + env(safe-area-inset-bottom));
+text-rendering:optimizeLegibility;overflow-wrap:break-word;hyphens:none}
+.wrap{max-width:620px;margin:0 auto}
+.top{display:flex;align-items:center;gap:12px;margin:0 2px 12px}
+.bar{flex:1;height:4px;background:#1f2531;border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--acc);transition:width .25s}
+.pinfo{font-size:13px;line-height:1.4;color:var(--dim);white-space:nowrap;font-variant-numeric:tabular-nums}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+h1{font-size:26px;line-height:1.22;font-weight:650;margin:0 0 10px;text-wrap:balance}
+h2{font-size:21px;line-height:1.3;font-weight:600;margin:0 0 8px;text-wrap:balance}
 p{margin:0 0 10px}
 .dim{color:var(--dim)}
-.small{font-size:13.5px}
-.num{display:inline-block;min-width:28px;height:24px;line-height:24px;text-align:center;border-radius:8px;
-background:#2a2f3d;color:#c9d3e6;font-size:13px;font-weight:700;margin-right:8px;vertical-align:1px}
-.chip{display:inline-flex;align-items:center;gap:13px;font-size:12px;color:var(--dim);margin-bottom:8px}
-.shelf{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-border-radius:20px;padding:2px 10px;margin-left:6px}
-.shelf-r{color:#ff9a9a;background:#3a1d20;border:1px solid #4a2528}
-.shelf-g{color:#7ce7b8;background:#123028;border:1px solid #1f4436}
-.shelf-y{color:#ffcf8a;background:#3a2e16;border:1px solid #4a3b1e}
-.it{display:flex;gap:11px;align-items:flex-start;padding:13px 10px;border-radius:11px;margin:3px 0;
-cursor:pointer;transition:background .12s;border:1px solid transparent}
-.it:active{background:#20242f}
-.it .bx{flex:0 0 24px;height:24px;border-radius:7px;border:1.6px solid #3f4757;display:flex;
-align-items:center;justify-content:center;font-size:15px;color:#0f1117;margin-top:1px;transition:.12s}
-.it .txt{flex:1;font-size:16.5px;line-height:1.42}
-.it.on{background:#232a3a;border-color:#31405c}
-.it.on .bx{background:var(--acc);border-color:var(--acc);color:#fff}
-.cnt{font-size:12.5px;color:var(--dim);margin:10px 4px 0}
-.cnt.ok{color:#7ce7b8}
-button{font:inherit;width:100%;min-height:48px;padding:13px 14px;border-radius:12px;border:1px solid var(--line);
-background:#1e222d;color:var(--txt);margin:7px 0;cursor:pointer;text-align:center}
-button:active{transform:scale(.995);opacity:.92}
-button.primary{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}
-button.ghost{background:transparent;border-color:transparent;color:var(--dim);font-size:13.5px;min-height:40px;padding:8px}
-.pill{display:inline-flex;align-items:center;gap:6px;background:#1e222d;border:1px solid var(--line);
-border-radius:10px;padding:6px 11px;margin:3px 5px 3px 0;font-size:13px;color:var(--dim)}
-.pill b{color:var(--txt);font-size:15px}
-.verdict{border-radius:14px;padding:13px;margin-top:12px;font-size:15px;border:1px solid var(--line);background:#151822}
-.verdict b{display:block;margin-bottom:5px;font-size:16px}
-.verdict.r{border-color:#4a2528;background:#1c1418}.verdict.g{border-color:#1f4436;background:#121b18}
-.verdict.y{border-color:#4a3b1e;background:#1c1810}
-.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 4px;
-border-bottom:1px solid #20242e;cursor:pointer;font-size:16px}
+.hint{font-size:13px;line-height:1.55;color:var(--dim);margin:0 0 14px}
+.meta{display:flex;align-items:center;gap:8px;font-size:13px;line-height:1.4;color:var(--dim);margin-bottom:10px}
+.meta-line{font-size:13px;line-height:1.5;color:var(--dim);margin:12px 0 0;font-variant-numeric:tabular-nums}
+.num{display:inline-block;min-width:26px;height:24px;line-height:24px;text-align:center;border-radius:7px;
+background:#232a37;color:#c9d3e6;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.shelf-r{color:var(--red)}
+.shelf-g{color:var(--green)}
+.shelf-y{color:var(--amber)}
+#list{margin:0 -4px}
+.it{display:flex;gap:12px;align-items:flex-start;padding:14px 4px;border-bottom:1px solid var(--soft);cursor:pointer}
+.it:last-child{border-bottom:0}
+.it .bx{flex:0 0 22px;height:22px;border-radius:6px;border:1.5px solid #3c4453;display:flex;
+align-items:center;justify-content:center;font-size:14px;line-height:1;margin-top:2px;transition:.12s}
+.it .txt{flex:1;font-size:17px;line-height:1.45;color:var(--txt)}
+.it.on .txt{font-weight:500}
+.it.on .bx{color:#0e1015;font-weight:800}
+.it.on.s-r .bx{background:var(--red);border-color:var(--red)}
+.it.on.s-g .bx{background:var(--green);border-color:var(--green)}
+.it.on.s-y .bx{background:var(--amber);border-color:var(--amber)}
+.it.on.s-0 .bx{background:var(--acc);border-color:var(--acc)}
+.cnt{font-size:13px;line-height:1.5;color:var(--dim);margin:14px 0 0;font-variant-numeric:tabular-nums}
+.cnt.ok{color:var(--green)}
+button{font:inherit;font-size:17px;font-weight:600;width:100%;min-height:52px;padding:14px 16px;
+border-radius:12px;border:1px solid #2a313f;background:#1b212b;color:var(--txt);margin:8px 0;cursor:pointer}
+button:active{opacity:.9}
+button.primary{background:var(--acc);border-color:var(--acc);color:#fff}
+button.ghost{background:transparent;border-color:transparent;color:var(--dim);font-size:15px;
+font-weight:400;min-height:44px;padding:8px}
+button:focus-visible,.it:focus-visible,.row:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.pill{display:inline-flex;flex-direction:column;gap:2px;background:#1b212b;border:1px solid var(--line);
+border-radius:10px;padding:9px 12px;margin:0 6px 6px 0;font-size:13px;line-height:1.3;color:var(--dim)}
+.pill b{font-size:21px;line-height:1.1;font-weight:650;color:var(--txt);font-variant-numeric:tabular-nums}
+.verdict{border-left:3px solid #2a313f;padding:2px 0 2px 13px;margin:14px 0 0;font-size:17px;line-height:1.45}
+.verdict b{display:block;margin-bottom:4px;font-size:17px;font-weight:650}
+.verdict.r{border-left-color:var(--red)}
+.verdict.g{border-left-color:var(--green)}
+.verdict.y{border-left-color:var(--amber)}
+.ex{font-size:17px;line-height:1.5;color:var(--dim);margin:6px 0}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 2px;
+border-bottom:1px solid var(--soft);cursor:pointer;font-size:17px}
 .row:last-child{border-bottom:0}
-.row .t{flex:1;line-height:1.35}
-.row .c{font-size:12.5px;color:var(--dim);white-space:nowrap}
-#ft{position:fixed;left:0;right:0;bottom:0;display:none;gap:8px;padding:9px 10px calc(9px + env(safe-area-inset-bottom));
-background:rgba(15,17,23,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line);z-index:9}
-#ft button{margin:0;flex:1;padding:13px 6px;min-height:50px}
-#ft button.primary{flex:1.5}
-textarea{width:100%;min-height:200px;background:#12151d;color:#cfd7e6;border:1px solid var(--line);
-border-radius:12px;padding:11px;font:13px/1.45 ui-monospace,Menlo,monospace;resize:vertical}
-.steps{counter-reset:s;margin:0;padding:0;list-style:none}
-.steps li{position:relative;padding:0 0 13px 34px;font-size:15.5px}
-.steps li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:1px;width:24px;height:24px;
-border-radius:50%;background:#2a3040;color:#c9d3e6;font-size:12px;font-weight:700;display:flex;
+.row .t{flex:1;line-height:1.4;font-weight:500}
+.row .c{font-size:13px;line-height:1.4;color:var(--dim);white-space:nowrap;font-variant-numeric:tabular-nums}
+#ft{position:fixed;left:0;right:0;bottom:0;display:none;gap:8px;
+padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+background:rgba(14,16,21,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);z-index:9}
+#ft button{margin:0;flex:1;padding:13px 8px;min-height:52px}
+#ft button.primary{flex:1.6}
+textarea{width:100%;min-height:200px;background:#11151c;color:#cfd7e6;border:1px solid var(--line);
+border-radius:12px;padding:12px;font:400 14px/1.5 ui-monospace,Menlo,monospace;resize:vertical}
+.steps{counter-reset:s;margin:0 0 4px;padding:0;list-style:none}
+.steps li{position:relative;padding:0 0 14px 32px;font-size:17px;line-height:1.45}
+.steps li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:2px;width:22px;height:22px;
+border-radius:50%;background:#232a37;color:#c9d3e6;font-size:12px;font-weight:600;display:flex;
 align-items:center;justify-content:center}
-b.hl{color:#fff}
-a{color:var(--acc)}
+b.hl{font-weight:650}
+a{color:#6f9df0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style></head>
 <body><div class="wrap">
 <div class="top"><div class="bar"><i id="pb"></i></div><div class="pinfo" id="pinfo"></div></div>
@@ -90,12 +101,18 @@ const SH={
  o:{n:'перегиб',c:'y',hint:'Делаешь так слишком часто или слишком сильно, и это уже мешает — отмечай.'},
  m:{n:'средний уровень',c:'',hint:'Середина: и не мешает, и не опора.'}
 };
-const BT={competency:'компетенция',criteria:'критерий эффективности',stopper:'стоппер карьеры'};
+const BT={competency:'Компетенция',criteria:'Критерий эффективности',stopper:'Стоппер карьеры'};
 function shelves(d){return ORDER.filter(function(k){return (d[k]||[]).length>0})}
 const STEPS=[]; DATA.forEach(function(d){shelves(d).forEach(function(k){STEPS.push({n:d.n,k:k})})});
 const TOTAL=STEPS.length;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
-function escH(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function typo(s){
+  return String(s==null?'':s)
+    .replace(/ (—|–) /g,'\u00A0$1 ')
+    .replace(/(^|[\s(«"])([а-яёa-z]{1,2}) /gi,function(m,pre,w){return pre+w+'\u00A0'})
+    .replace(/(\d) (из) (\d)/g,'$1\u00A0$2\u00A0$3')
+}
+function escH(s){return typo(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function paint(h,foot){
   document.getElementById('app').innerHTML=h;
   var ft=document.getElementById('ft');
@@ -109,7 +126,7 @@ function updateBar(){
   document.getElementById('pinfo').textContent=p+' / '+TOTAL+' полок';
 }
 function idxOf(n,k){for(var i=0;i<STEPS.length;i++){if(STEPS[i].n===n&&STEPS[i].k===k)return i}return -1}
-function cntTxt(v){return v>=2?(v+' из 2 ✓ достаточно'):(v+' / 2 нужно')}
+function cntTxt(v){return v>=2?('вывод есть — '+v+' отм.'):(v+' из 2')}
 function verdict(a){
   var c=function(k){return (a[k]||[]).length};
   var nr=c('nr'),p=c('p'),o=c('o');
@@ -130,15 +147,14 @@ function goStep(i){
   var arr=S.ans[st.n][k]||(S.ans[st.n][k]=[]);
   var sh=shelves(d), pos=sh.indexOf(k)+1, info=SH[k];
   var h='<div class="card">'+
-    '<div class="chip"><span class="num">'+d.n+'</span>'+BT[d.b]+
-      '<span class="shelf shelf-'+info.c+'">'+info.n+'</span>'+
-      (sh.length>1?'<span>полка '+pos+' из '+sh.length+'</span>':'')+'</div>'+
-    '<h2>'+escH(d.t)+' — '+info.n+'</h2>'+
-    (info.hint?'<p class="dim small">'+info.hint+'</p>':'')+
+    '<div class="meta"><span class="num">'+d.n+'</span><span>'+BT[d.b]+
+      (sh.length>1?', полка '+pos+' из '+sh.length:'')+'</span></div>'+
+    '<h2>'+escH(d.t)+': <span class="shelf-'+info.c+'">'+info.n+'</span></h2>'+
+    (info.hint?'<p class="hint">'+info.hint+'</p>':'')+
     '<div id="list">';
   (d[k]||[]).forEach(function(txt,j){
     var on=arr.indexOf(j)>=0;
-    h+='<div class="it'+(on?' on':'')+'" onclick="mark(this,'+j+')"><div class="bx">'+(on?'✓':'')+
+    h+='<div class="it s-'+info.c+(on?' on':'')+'" onclick="mark(this,'+j+')"><div class="bx">'+(on?'✓':'')+
        '</div><div class="txt">'+escH(txt)+'</div></div>';
   });
   h+='</div><div class="cnt'+(arr.length>=2?' ok':'')+'" id="cnt">'+cntTxt(arr.length)+'</div></div>';
@@ -179,8 +195,7 @@ function goChapter(n){
   h+='<div style="margin-top:14px">';
   sh.forEach(function(k){
     var c=(a[k]||[]).length, col=SH[k].c;
-    h+='<div class="row" onclick="goStep('+idxOf(n,k)+')"><div class="t">'+
-       '<span class="shelf shelf-'+col+'" style="margin:0 8px 0 0">'+SH[k].n+'</span></div>'+
+    h+='<div class="row" onclick="goStep('+idxOf(n,k)+')"><div class="t shelf-'+col+'">'+SH[k].n+'</div>'+
        '<div class="c">'+c+' отм. ›</div></div>';
   });
   h+='</div>';
@@ -209,13 +224,13 @@ function goHome(){
    '<li>У компетенции <b class="hl">три отдельные карточки</b>: что мешает, проявления силы, перегиб. Открываешь по одной — не надо листать длинную страницу.</li>'+
    '<li><b class="hl">Две отметки на одной карточке — вывод.</b> Одна — случайность. Ни одной — нейтрально, пропускай.</li>'+
    '</ol>'+
-   '<div class="verdict" style="margin-bottom:12px"><b>Пример на «Ориентации на действие»</b>'+
-   '<div class="small">«Могу тянуть время с решением» — что мешает<br>'+
-   '«Люблю напряжённо работать» — проявление силы<br>'+
-   '«Могу быть трудоголиком» — перегиб</div></div>'+
+   '<div style="margin:0 0 16px"><b style="font-weight:650">Пример: «Ориентация на действие»</b>'+
+   '<div class="ex"><span class="shelf-r">Могу тянуть время с решением</span>&nbsp;— что мешает</div>'+
+   '<div class="ex"><span class="shelf-g">Люблю напряжённо работать</span>&nbsp;— проявление силы</div>'+
+   '<div class="ex"><span class="shelf-y">Могу быть трудоголиком</span>&nbsp;— перегиб</div></div>'+
    '<button onclick="showHow()">Как понять, развито у меня или нет</button>'+
-   '<div><span class="pill"><b>'+doneCh+'</b>из '+DATA.length+' глав</span>'+
-   '<span class="pill"><b>'+p+'</b>из '+TOTAL+' карточек</span></div>'+
+   '<div style="margin:12px 0 4px"><span class="pill"><b>'+doneCh+'</b>глав из '+DATA.length+'</span>'+
+   '<span class="pill"><b>'+p+'</b>карточек из '+TOTAL+'</span></div>'+
    (nx?'<button class="primary" onclick="goStep('+idxOf(nx.n,nx.k)+')">'+(p?'Продолжить':'Начать')+' — №'+nx.n+' '+escH(BY[nx.n].t)+', '+SH[nx.k].n+'</button>'
       :'<button class="primary" onclick="showResults()">Показать итоги</button>')+
    '<button onclick="showList(\'competency\')">Все компетенции (1–67)</button>'+
